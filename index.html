@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MOMBASA</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <style>
+        #map {
+            height: 600px;
+            width: 100%;
+        }
+        .custom-popup {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+        // Initialize the map centered 
+        var map = L.map('map').setView([-4.07, 39.68 ], 10); // 
+
+        // Add a tile layer (OpenStreetMap tiles)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Define marker coordinates within JKUAT Juja
+        var marker1 = L.marker([-4.042896, 39.6725]).addTo(map);
+        var marker2 = L.marker([-4.286389, 39.8173]).addTo(map);
+
+        // Custom popup content
+        var popupContent1 = '<div class="custom-popup">' +
+                                '<h3>MOMBASA COUNTY</h3>' +
+                                '<p>   Population: 1,495,000 (2019) Elevation: 10 m Area code: 020 Demonym: Pwani    </p>' 
+                                '<a href="https://example.com">More info</a>' +
+                            '</div>';
+
+        var popupContent2 = '<div class="custom-popup">' +
+                                '<h3>INDIAN OCEAN</h3>' +
+                                '<p> Area: 70.56 million km² Mean depth:3600m Max: depth: 7,290 m (23,920 ft); (Sunda Trench) Max. length: 9,600 km (6,000 mi); (Antarctica to Bay of Bengal) </p>' +
+                                '<a href="https://example.com">More info</a>' +
+                            '</div>';
+
+        // Bind popups to markers
+        marker1.bindPopup(popupContent1);
+        marker2.bindPopup(popupContent2);
+    </script>
+</body>
+</html>
